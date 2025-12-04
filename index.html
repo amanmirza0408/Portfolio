@@ -213,9 +213,7 @@ Mobile: ${mobile}
 Subject: ${subject}
 Message: ${message}`;
 
-    let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-    // IMPORTANT FIX FOR MOBILE + GITHUB PAGES
+    let url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
     window.location.href = url;
   });
 </script>
@@ -243,6 +241,7 @@ Message: ${message}`;
 </body>
 
 </html>
+
 
 
 
