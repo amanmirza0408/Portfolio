@@ -191,33 +191,35 @@
      </form>
    </section>
 
-   <script>
-    document.querySelector(".btn").addEventListener("click", function (e) {
-      e.preventDefault();
-  
-      let name = document.getElementById("name").value;
-      let email = document.getElementById("email").value;
-      let mobile = document.getElementById("mobile").value;
-      let subject = document.getElementById("subject").value;
-      let message = document.getElementById("message").value;
-  
-      let phoneNumber = "9313727822"; // YOUR WHATSAPP NUMBER
-  
-      let whatsappMessage = 
-  `New Contact Form Message:
-  -----------------------
-  Name: ${name}
-  Email: ${email}
-  Mobile: ${mobile}
-  Subject: ${subject}
-  Message: ${message}`;
-  
-      let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-  
-      // FIX FOR GITHUB PAGES – MUST BE direct user action
-      window.location.href = url;
-    });
-  </script>
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let mobile = document.getElementById("mobile").value;
+    let subject = document.getElementById("subject").value;
+    let message = document.getElementById("message").value;
+
+    // Your WhatsApp Number (MUST include country code)
+    let phoneNumber = "919313727822";
+
+    let whatsappMessage = 
+`New Contact Form Message:
+-----------------------
+Name: ${name}
+Email: ${email}
+Mobile: ${mobile}
+Subject: ${subject}
+Message: ${message}`;
+
+    let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    // IMPORTANT FIX FOR MOBILE + GITHUB PAGES
+    window.location.href = url;
+  });
+</script>
+
 
 
   <!-- footer design -->
@@ -241,6 +243,7 @@
 </body>
 
 </html>
+
 
 
 
