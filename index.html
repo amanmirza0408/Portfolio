@@ -170,21 +170,58 @@
 
 
   <!-- contact section design -->
-  <section class="contact" id="contact">
+  <!-- contact section design -->
+   <section class="contact" id="contact">
      <h2 class="heading">Contact <span>Me!</span></h2>
-     <form action="#">
-        <div class="input-box">
-           <input type="text" placeholder="Full Name">
-           <input type="email" placeholder="Email Address">
-        </div>
-        <div class="input-box">
-           <input type="number" placeholder="Mobile Number">
-           <input type="text" placeholder="Email Subject">
-        </div>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-        <input type="submit" value="Send Messaage" class="btn">|
+
+     <form id="contactForm">
+       <div class="input-box">
+         <input type="text" id="name" placeholder="Full Name" required>
+         <input type="email" id="email" placeholder="Email Address" required>
+       </div>
+
+       <div class="input-box">
+         <input type="number" id="mobile" placeholder="Mobile Number" required>
+         <input type="text" id="subject" placeholder="Email Subject" required>
+       </div>
+
+       <textarea id="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+
+       <input type="submit" value="Send Message" class="btn">
      </form>
-  </section>
+   </section>
+
+   <script>
+     document.getElementById("contactForm").addEventListener("submit", function (e) {
+       e.preventDefault();
+
+       // Collect form values
+       let name = document.getElementById("name").value;
+       let email = document.getElementById("email").value;
+       let mobile = document.getElementById("mobile").value;
+       let subject = document.getElementById("subject").value;
+       let message = document.getElementById("message").value;
+
+       // Your WhatsApp Number (country code + number, NO spaces, NO + sign)
+       let phoneNumber = "9313727822"; // <-- PUT YOUR NUMBER HERE
+
+       // Create WhatsApp message
+       let whatsappMessage = 
+   `New Contact Form Message:
+   -----------------------
+   Name: ${name}
+   Email: ${email}
+   Mobile: ${mobile}
+   Subject: ${subject}
+   Message: ${message}`;
+
+       // Create WhatsApp URL
+       let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+       // Open WhatsApp Chat
+       window.open(url, "_blank");
+     });
+   </script>
 
 
   <!-- footer design -->
@@ -208,5 +245,6 @@
 </body>
 
 </html>
+
 
 
